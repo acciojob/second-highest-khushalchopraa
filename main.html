@@ -12,23 +12,28 @@ function secondHighest(arr) {
     if (arr.length === 0) return undefined; // Condition 3
     if (arr.length === 1) return undefined; // Condition 4
 
-    let first = -Infinity, second = -Infinity;
+    let first = -Infinity;
+    let secondHighest = -Infinity;
 
     for (let i = 0; i < arr.length; i++) {
-        if (arr[i] > first) {
-            second = first;
-            first = arr[i];
-        } else if (arr[i] > second && arr[i] < first) {
-            second = arr[i];
+        first = Math.max(first, arr[i]);
+    }
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] != first) {
+            secondHighest = Math.max(secondHighest, arr[i]);
         }
     }
 
-    if (second === -Infinity) {
+    if (secondHighest === -Infinity) {
         return first; // Condition 5
     }
 
-    return second;
+    return secondHighest;
 }
+
+console.log(secondHighest(arr)); // Output should be 4
+	</script>
     <script type="text/javascript" src="./script.js">
 </script>
 
