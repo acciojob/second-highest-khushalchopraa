@@ -8,24 +8,27 @@
 
 <body>	
 	<script>
-	function secondHighest(arr) {
- 
+function secondHighest(arr) {
+    if (arr.length === 0) return undefined; // Condition 3
+    if (arr.length === 1) return undefined; // Condition 4
 
-    let first = -Infinity, 
-	
+    let first = -Infinity, second = -Infinity;
 
-   for(let i =0; i<=arr.length; i++){
-	   first= Math.max(first, arr[i])
-   }
-		let second = -Infinity;
-		for(let i=0; i<arr.length; i++){
-			second=Math.max(second, arr[i])
-		}
-		return second;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] > first) {
+            second = first;
+            first = arr[i];
+        } else if (arr[i] > second && arr[i] < first) {
+            second = arr[i];
+        }
+    }
 
-			
-	</script>
+    if (second === -Infinity) {
+        return first; // Condition 5
+    }
 
+    return second;
+}
     <script type="text/javascript" src="./script.js">
 </script>
 
