@@ -8,21 +8,31 @@
 
 <body>	
 	<script>
-		function secondHighest(arr) {
-    if (arr.length < 2) return -Infinity;
+	function secondHighest(arr) {
+    if (arr.length  === 0) return undefined;
+    if (arr.length === 1) return undefined;
 
-    let first = -Infinity, second = -Infinity;
+    let first = -Infinity, 
+	let second = -Infinity;
 
     for (let num of arr) {
         if (num > first) {
             second = first;
             first = num;
-        } else if (num > second && num < first) {
+        }else if (num > second && num < first) {
             second = num;
         }
+	}
+
+    if (second === -Infinity) {
+        return first;
     }
 
+    return second;
+}
+
     return second === -Infinity ? -Infinity : second;
+			
 	</script>
 
     <script type="text/javascript" src="./script.js">
